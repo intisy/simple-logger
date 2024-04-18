@@ -8,15 +8,17 @@ import java.util.List;
 public class Logger {
     private final int logLevel;
     private int percent = 0;
+    private final boolean enablePercent;
     private long lastTime = 0;
     private final long startTime;
     String major;
     String last = "";
-    private final boolean shortLog;
+    private final boolean enableShortLog;
     final List<String> logs = new ArrayList<>();
-    public Logger(int logLevel, boolean shortLog) {
+    public Logger(int logLevel, boolean enableShortLog, boolean enablePercent) {
+        this.enablePercent = enablePercent;
         this.logLevel = logLevel;
-        this.shortLog = shortLog;
+        this.enableShortLog = enableShortLog;
         this.startTime = System.currentTimeMillis();
     }
     public void setPercent(int percent) {
@@ -72,13 +74,14 @@ public class Logger {
             log(LogColor.BLUE_BACKGROUND.apply(String.valueOf(log)), true);
     }
     public void log(Object log, boolean m) {
-        if (lastTime != 0)
-            log = "(" + ((int) ((double) (System.currentTimeMillis()-startTime)/lastTime*100)) + "%) " + log.toString();
-        else
-            log = "(" + percent + "%) " + log.toString();
+        if (enablePercent)
+            if (lastTime != 0)
+                log = "(" + ((int) ((double) (System.currentTimeMillis()-startTime)/lastTime*100)) + "%) " + log.toString();
+            else
+                log = "(" + percent + "%) " + log.toString();
         if (!last.equals(String.valueOf(log))) {
             last = String.valueOf(log);
-            if (shortLog)
+            if (enableShortLog)
                 System.out.println(LogColor.WHITE.apply(String.valueOf(log)));
             else {
                 if (m)
