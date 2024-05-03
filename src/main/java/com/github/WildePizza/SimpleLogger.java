@@ -1,11 +1,11 @@
-package wildepizza.com.github.simplelogger;
+package com.github.WildePizza;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("unused")
-public class Logger {
+public class SimpleLogger {
     private final int logLevel;
     private int percent = 0;
     private final boolean enablePercent;
@@ -15,7 +15,7 @@ public class Logger {
     String last = "";
     private final boolean enableShortLog;
     final List<String> logs = new ArrayList<>();
-    public Logger(int logLevel, boolean enableShortLog, boolean enablePercent) {
+    public SimpleLogger(int logLevel, boolean enableShortLog, boolean enablePercent) {
         this.enablePercent = enablePercent;
         this.logLevel = logLevel;
         this.enableShortLog = enableShortLog;

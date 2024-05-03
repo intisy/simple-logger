@@ -3,7 +3,7 @@ plugins {
     id("maven-publish")
 }
 
-group = "wildepizza.com.github.simplelogger"
+group = "com.github.WildePizza"
 
 repositories {
     mavenCentral()

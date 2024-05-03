@@ -1,6 +1,6 @@
-package wildepizza.com.github.simplelogger;
+package com.github.WildePizza;
 
-public class EmptyLogger extends Logger {
+public class EmptyLogger extends SimpleLogger {
     public EmptyLogger(int logLevel, boolean enableShortLog, boolean enablePercent) {
         super(logLevel, enableShortLog, enablePercent);
     }
