@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("maven-publish")
 }
 
 group = "wildepizza.com.github.logger"
@@ -11,13 +12,4 @@ repositories {
 
 tasks.jar {
     archiveFileName.set("SimpleLogger.jar") // Set the name of the JAR file here
-}
-
-dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.9.1"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-}
-
-tasks.test {
-    useJUnitPlatform()
 }
