@@ -1,21 +1,21 @@
-plugins {
-    id("java")
-    id("maven-publish")
-}
+apply plugin: 'java'
+apply plugin: 'maven-publish'
 
 group = "com.github.WildePizza"
-version = '1.7.2'
+version = '1.7.3'
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-    withSourcesJar()
-    withJavadocJar()
-}
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 repositories {
     mavenCentral()
 }
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
 publishing {
     publications {
         maven(MavenPublication) {
@@ -25,6 +25,7 @@ publishing {
 }
 
 wrapper {
+    gradleVersion = "7.3.3"
     distributionType = Wrapper.DistributionType.ALL
 }
 
