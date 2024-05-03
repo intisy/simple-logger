@@ -3,8 +3,7 @@ plugins {
     id("maven-publish")
 }
 
-group = "wildepizza.com.github.logger"
-version = "1.2"
+group = "wildepizza.com.github.simplelogger"
 
 repositories {
     mavenCentral()
@@ -14,7 +13,6 @@ publishing {
         register("mavenJava", MavenPublication::class) {
             groupId = group.toString()
             artifactId = "simple-logger" // Use a lowercase artifactId (convention)
-            version = version
         }
     }
 }
