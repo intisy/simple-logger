@@ -1,0 +1,33 @@
+plugins {
+    id("java")
+    id("maven-publish")
+}
+
+group = "com.github.WildePizza"
+version = '1.7'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+    withSourcesJar()
+    withJavadocJar()
+}
+
+repositories {
+    mavenCentral()
+}
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+wrapper {
+    distributionType = Wrapper.DistributionType.ALL
+}
+
+tasks.jar {
+    archiveFileName.set("SimpleLogger.jar")
+}
