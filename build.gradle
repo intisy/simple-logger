@@ -4,11 +4,13 @@ plugins {
 }
 
 group = "com.github.WildePizza"
-version = '1.7'
+version = '1.7.2'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
+    withSourcesJar()
+    withJavadocJar()
 }
 
 repositories {
