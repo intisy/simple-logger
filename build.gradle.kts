@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "wildepizza.com.github.logger"
-version = "1.0"
+version = "1.2"
 
 repositories {
     mavenCentral()
