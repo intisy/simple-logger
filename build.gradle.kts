@@ -10,7 +10,7 @@ repositories {
 }
 
 tasks.jar {
-    archiveFileName.set("Logger.jar") // Set the name of the JAR file here
+    archiveFileName.set("SimpleLogger.jar") // Set the name of the JAR file here
 }
 
 dependencies {

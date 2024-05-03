@@ -1,2 +1,2 @@
-rootProject.name = "Logger"
+rootProject.name = "SimpleLogger"
 

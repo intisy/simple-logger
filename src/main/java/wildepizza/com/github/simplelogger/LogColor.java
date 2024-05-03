@@ -1,4 +1,4 @@
-package wildepizza.com.github.logger;
+package wildepizza.com.github.simplelogger;
 
 @SuppressWarnings("unused")
 enum LogColor {

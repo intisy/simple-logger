@@ -1,4 +1,4 @@
-package wildepizza.com.github.logger;
+package wildepizza.com.github.simplelogger;
 
 public class EmptyLogger extends Logger {
     public EmptyLogger(int logLevel, boolean enableShortLog, boolean enablePercent) {

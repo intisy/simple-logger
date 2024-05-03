@@ -1,4 +1,4 @@
-package wildepizza.com.github.logger;
+package wildepizza.com.github.simplelogger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
