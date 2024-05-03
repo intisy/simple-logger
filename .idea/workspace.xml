@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ef8a168-af56-43b7-b14f-940a4c4dc579" name="Changes" comment="" />
+    <list default="true" id="8ef8a168-af56-43b7-b14f-940a4c4dc579" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/gradle-wrapper-validation.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wildepizza/com/github/simplelogger/EmptyLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/WildePizza/EmptyLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wildepizza/com/github/simplelogger/LogColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/WildePizza/LogColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wildepizza/com/github/simplelogger/LogStyle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/WildePizza/LogStyle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/wildepizza/com/github/simplelogger/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/WildePizza/SimpleLogger.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,18 +35,12 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Logger" type="f1a62948:ProjectNode" />
+                <item name="SimpleLogger" type="f1a62948:ProjectNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Logger" type="f1a62948:ProjectNode" />
+                <item name="SimpleLogger" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Logger" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -63,15 +66,21 @@
     "Gradle.Logger [build].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.google.cloudcode.ide_session_index": "20240503_0000",
+    "com.google.cloudcode.ide_session_index": "20240503_0001",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "F:/Github/SimpleLogger",
+    "last_opened_file_path": "F:/Github/SimpleLogger/.github/workflows",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Github\SimpleLogger\.github\workflows" />
+      <recent name="F:\Github\SimpleLogger" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Logger [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -110,6 +119,13 @@
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="StandaloneScriptsStorage">
+    <option name="files">
+      <set>
+        <option value="$PROJECT_DIR$/build.gradle.kts" />
+      </set>
+    </option>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="8ef8a168-af56-43b7-b14f-940a4c4dc579" name="Changes" comment="" />
