@@ -19,6 +19,6 @@ Archives containing JAR files are available as [releases](https://github.com/Wil
     }
   }
   dependencies {
-      implementation 'com.github.WildePizza:SimpleLogger:1.7.5'
+      implementation 'com.github.WildePizza:SimpleLogger:1.7.6'
   }
 ```

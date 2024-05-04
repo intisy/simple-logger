@@ -45,6 +45,9 @@ public class SimpleLogger {
         );
     }
     public void horrible(Object log) {
+        horrible(log, null);
+    }
+    public void horrible(Object log, String message) {
         StringBuilder print;
         if (log instanceof Exception) {
             print = new StringBuilder("Cause:" + ((Exception) log).getCause().toString()
@@ -55,7 +58,8 @@ public class SimpleLogger {
             }
         } else
             print = new StringBuilder(log.toString());
-        System.out.println(LogColor.RED.apply(print.toString()));
+
+        System.out.println(LogColor.RED.apply((message == null ? "" : message) + print));
         System.exit(0);
     }
     public void debug(Object log) {
