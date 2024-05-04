@@ -7,7 +7,7 @@ Archives containing JAR files are available as [releases](https://github.com/Wil
   <dependency>
     <groupId>com.github.WildePizza</groupId>
     <artifactId>SimpleLogger</artifactId>
-    <version>1.7.5</version>
+    <version>1.7.6</version>
   </dependency>
 ```
  

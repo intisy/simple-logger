@@ -37,6 +37,7 @@ public class SimpleLogger {
     public void error(Object log) {
         System.out.println(LogColor.RED.apply(String.valueOf(log)));
     }
+    @Deprecated
     public void exception(Exception exception) {
         warning(
                 "Cause:" + exception.getCause().toString()
@@ -50,8 +51,8 @@ public class SimpleLogger {
     public void horrible(Object log, String message) {
         StringBuilder print;
         if (log instanceof Exception) {
-            print = new StringBuilder("Cause:" + ((Exception) log).getCause().toString()
-                    + "\nMessage" + ((Exception) log).getMessage()
+            print = new StringBuilder("Cause: " + ((Exception) log).getCause().toString()
+                    + "\nMessage: " + ((Exception) log).getMessage()
                     + "\nStacktrace:\n");
             for (StackTraceElement e : ((Exception) log).getStackTrace()) {
                 print.append(e.toString()).append("\n");
