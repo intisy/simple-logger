@@ -37,7 +37,6 @@ public class SimpleLogger {
     public void error(Object log) {
         System.out.println(LogColor.RED.apply(String.valueOf(log)));
     }
-    @Deprecated
     public void exception(Exception exception) {
         warning(
                 "Cause:" + exception.getCause().toString()
@@ -48,19 +47,21 @@ public class SimpleLogger {
     public void horrible(Object log) {
         horrible(log, null);
     }
-    public void horrible(Object log, String message) {
+    private String exceptionToString(Exception exception) {
         StringBuilder print;
+        print = new StringBuilder("Cause: " + exception.getCause().toString()
+                + "\nMessage: " + exception.getMessage()
+                + "\nStacktrace:\n");
+        for (StackTraceElement e : exception.getStackTrace()) {
+            print.append("   ").append(e.toString()).append("\n");
+        }
+        return print.toString();
+    }
+    public void horrible(Object log, String message) {
         if (log instanceof Exception) {
-            print = new StringBuilder("Cause: " + ((Exception) log).getCause().toString()
-                    + "\nMessage: " + ((Exception) log).getMessage()
-                    + "\nStacktrace:\n");
-            for (StackTraceElement e : ((Exception) log).getStackTrace()) {
-                print.append("   ").append(e.toString()).append("\n");
-            }
-        } else
-            print = new StringBuilder(log.toString());
-
-        System.out.println(LogColor.RED.apply((message == null ? "" : message) + print));
+            log = exceptionToString((Exception) log);
+        }
+        System.out.println(LogColor.RED.apply((message == null ? "" : message) + log));
         System.exit(0);
     }
     public void debug(Object log) {
