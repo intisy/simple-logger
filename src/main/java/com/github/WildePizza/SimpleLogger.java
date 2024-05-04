@@ -44,13 +44,18 @@ public class SimpleLogger {
                         + "\nStacktrace:" + Arrays.toString(exception.getStackTrace())
         );
     }
-    public void horrible(Object log) {horrible(log, "");}
-    public void horrible(Object log, String message) {
-        if (log instanceof Exception)
-            log = "Cause:" + ((Exception) log).getCause().toString()
+    public void horrible(Object log) {
+        StringBuilder print;
+        if (log instanceof Exception) {
+            print = new StringBuilder("Cause:" + ((Exception) log).getCause().toString()
                     + "\nMessage" + ((Exception) log).getMessage()
-                    + "\nStacktrace:" + Arrays.toString(((Exception) log).getStackTrace());
-        System.out.println(LogColor.RED.apply(message + log));
+                    + "\nStacktrace:\n");
+            for (StackTraceElement e : ((Exception) log).getStackTrace()) {
+                print.append(e.toString()).append("\n");
+            }
+        } else
+            print = new StringBuilder(log.toString());
+        System.out.println(LogColor.RED.apply(print.toString()));
         System.exit(0);
     }
     public void debug(Object log) {
