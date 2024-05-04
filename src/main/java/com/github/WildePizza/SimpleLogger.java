@@ -38,14 +38,14 @@ public class SimpleLogger {
         System.out.println(LogColor.RED.apply(String.valueOf(log)));
     }
     public void exception(Exception exception) {
+        exception(exception, null);
+    }
+    public void exception(Exception exception, String message) {
         warning(
-                "Cause:" + exception.getCause().toString()
+                message == null ? "" : message + "Cause:" + exception.getCause().toString()
                         + "\nMessage" + exception.getMessage()
                         + "\nStacktrace:" + Arrays.toString(exception.getStackTrace())
         );
-    }
-    public void horrible(Object log) {
-        horrible(log, null);
     }
     private String exceptionToString(Exception exception) {
         StringBuilder print;
@@ -57,11 +57,14 @@ public class SimpleLogger {
         }
         return print.toString();
     }
+    public void horrible(Object log) {
+        horrible(log, null);
+    }
     public void horrible(Object log, String message) {
         if (log instanceof Exception) {
             log = exceptionToString((Exception) log);
         }
-        System.out.println(LogColor.RED.apply((message == null ? "" : message) + log));
+        System.out.println(LogColor.RED.apply(message == null ? "" : message) + log);
         System.exit(0);
     }
     public void debug(Object log) {
