@@ -7,7 +7,7 @@ Archives containing JAR files are available as [releases](https://github.com/Wil
   <dependency>
     <groupId>com.github.WildePizza</groupId>
     <artifactId>SimpleLogger</artifactId>
-    <version>1.7.6</version>
+    <version>1.7.8</version>
   </dependency>
 ```
  
@@ -19,6 +19,6 @@ Archives containing JAR files are available as [releases](https://github.com/Wil
     }
   }
   dependencies {
-      implementation 'com.github.WildePizza:SimpleLogger:1.7.7'
+      implementation 'com.github.WildePizza:SimpleLogger:1.7.8'
   }
 ```
