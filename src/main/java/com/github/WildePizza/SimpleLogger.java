@@ -55,7 +55,7 @@ public class SimpleLogger {
                     + "\nMessage: " + ((Exception) log).getMessage()
                     + "\nStacktrace:\n");
             for (StackTraceElement e : ((Exception) log).getStackTrace()) {
-                print.append(e.toString()).append("\n");
+                print.append("   ").append(e.toString()).append("\n");
             }
         } else
             print = new StringBuilder(log.toString());
