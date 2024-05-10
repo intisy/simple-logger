@@ -41,11 +41,16 @@ public class SimpleLogger {
         exception(exception, null);
     }
     public void exception(Exception exception, String message) {
-        warning(
-                message == null ? "" : message
-                        + "Message" + exception.getMessage()
-                        + "\nStacktrace:" + Arrays.toString(exception.getStackTrace())
-        );
+        StringBuilder messageBuilder = new StringBuilder();
+        messageBuilder.append(message == null ? "" : message);
+        messageBuilder.append("Cause: ").append(exception.getCause());
+        messageBuilder.append("\nMessage: ").append(exception.getMessage());
+        messageBuilder.append("\nStacktrace: ");
+        for (StackTraceElement element: exception.getStackTrace()) {
+            messageBuilder.append("\n   ").append(element.toString());
+        }
+        message = messageBuilder.toString();
+        error(message);
     }
     private String exceptionToString(Exception exception) {
         StringBuilder print;
