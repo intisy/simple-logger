@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ef8a168-af56-43b7-b14f-940a4c4dc579" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/WildePizza/EmptyLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/WildePizza/EmptyLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +62,7 @@
     "Gradle.Logger [build].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.google.cloudcode.ide_session_index": "20240503_0002",
+    "com.google.cloudcode.ide_session_index": "20240505_0002",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "F:/Github/SimpleLogger",
