@@ -42,15 +42,14 @@ public class SimpleLogger {
     }
     public void exception(Exception exception, String message) {
         warning(
-                message == null ? "" : message + "Cause:" + exception.getCause()
-                        + "\nMessage" + exception.getMessage()
+                message == null ? "" : message
+                        + "Message" + exception.getMessage()
                         + "\nStacktrace:" + Arrays.toString(exception.getStackTrace())
         );
     }
     private String exceptionToString(Exception exception) {
         StringBuilder print;
-        print = new StringBuilder("Cause: " + exception.getCause()
-                + "\nMessage: " + exception.getMessage()
+        print = new StringBuilder("Message: " + exception.getMessage()
                 + "\nStacktrace:\n");
         for (StackTraceElement e : exception.getStackTrace()) {
             print.append("   ").append(e.toString()).append("\n");
