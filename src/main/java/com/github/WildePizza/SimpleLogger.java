@@ -50,7 +50,7 @@ public class SimpleLogger {
             messageBuilder.append("\n   ").append(element.toString());
         }
         message = messageBuilder.toString();
-        error(message);
+        error(Utils.removeDuplicateLines(message));
     }
     private String exceptionToString(Exception exception) {
         StringBuilder print;
