@@ -30,6 +30,15 @@ public class SimpleLogger {
     public void setLogLevel(int level) {
         logLevel = level;
     }
+    public boolean getEnablePercent() {
+        return enablePercent;
+    }
+    public boolean getEnableShortLog() {
+        return enableShortLog;
+    }
+    public int getLogLevel() {
+        return logLevel;
+    }
     public void setPercent(int percent) {
         this.percent = percent;
     }
