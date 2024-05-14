@@ -3,7 +3,8 @@ package com.github.WildePizza;
 @SuppressWarnings("unused")
 public class EmptyLogger extends SimpleLogger {
     public EmptyLogger() {
-        super(0, false, false);
+        super();
+        setLogLevel(0);
     }
     @Override
     public void log(Object log, boolean m) {
