@@ -6,20 +6,29 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public class SimpleLogger {
-    private final int logLevel;
+    private int logLevel;
     private int percent = 0;
-    private final boolean enablePercent;
+    private boolean enablePercent;
     private long lastTime = 0;
     private final long startTime;
     String major;
     String last = "";
-    private final boolean enableShortLog;
+    private boolean enableShortLog;
     final List<String> logs = new ArrayList<>();
-    public SimpleLogger(int logLevel, boolean enableShortLog, boolean enablePercent) {
-        this.enablePercent = enablePercent;
-        this.logLevel = logLevel;
-        this.enableShortLog = enableShortLog;
+    public SimpleLogger() {
+        this.enablePercent = false;
+        this.logLevel = 4;
+        this.enableShortLog = false;
         this.startTime = System.currentTimeMillis();
+    }
+    public void setEnablePercent(boolean enable) {
+        enablePercent = enable;
+    }
+    public void setEnableShortLog(boolean enable) {
+        enableShortLog = enable;
+    }
+    public void setLogLevel(int level) {
+        logLevel = level;
     }
     public void setPercent(int percent) {
         this.percent = percent;
