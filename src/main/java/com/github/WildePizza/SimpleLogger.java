@@ -117,7 +117,7 @@ public class SimpleLogger {
                 log = "(" + percent + "%) " + log.toString();
         if (!last.equals(String.valueOf(log))) {
             last = String.valueOf(log);
-            if (enableShortLog)
+            if (!enableShortLog)
                 System.out.println(LogColor.WHITE.apply(String.valueOf(log)));
             else {
                 if (m)
