@@ -1,5 +1,6 @@
 package com.github.WildePizza;
 
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -108,6 +109,10 @@ public class SimpleLogger {
     public void major(Object log) {
         if (logLevel >= 1)
             log(LogColor.BLUE_BACKGROUND.apply(String.valueOf(log)), true);
+    }
+    public void response(HttpResponse<String> response) {
+        note("Response Code: " + response.statusCode());
+        note("Response Body: " + response.body());
     }
     public void log(Object log, boolean m) {
         if (enablePercent)
