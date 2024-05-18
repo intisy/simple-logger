@@ -3,7 +3,7 @@ package com.github.WildePizza;
 @SuppressWarnings("unused")
 public class LoggerBuilder {
     private final SimpleLogger logger = new SimpleLogger();
-    private LoggerBuilder withLogLevel(int level) {
+    public LoggerBuilder withLogLevel(int level) {
         logger.setLogLevel(level);
         return this;
     }
@@ -15,7 +15,7 @@ public class LoggerBuilder {
         logger.setEnableShortLog(enable);
         return this;
     }
-    private SimpleLogger build() {
+    public SimpleLogger build() {
         return logger;
     }
 }
