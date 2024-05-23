@@ -26,6 +26,10 @@ jobs:
           echo "Latest tag: $latest_tag"
           echo "::set-output name=tag::$latest_tag"
 
+      - name: Commit changes
+        run: |
+          git reset --hard ${{ steps.get_latest_tag.outputs.tag }}
+
       - name: Update README
         id: update_readme
         run: |
@@ -55,12 +59,11 @@ jobs:
             }
           ```
           EOF
-
+          
       - name: Commit changes
         run: |
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
-          git reset --hard ${{ steps.get_latest_tag.outputs.tag }}
           git add README.md
           git commit -am "Auto-update README"
           git push origin master
