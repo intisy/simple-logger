@@ -1,8 +1,6 @@
 package com.github.WildePizza;
 
-import java.net.http.HttpResponse;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("unused")
