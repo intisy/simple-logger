@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'maven-publish'
 
 group = "com.github.WildePizza"
+version = "1.0"
 
 repositories {
     mavenCentral()
@@ -18,17 +19,17 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/WildePizza/SimpleLogger")
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
             }
         }
     }
     publications {
         gpr(MavenPublication) {
+            artifactId = 'simple-logger'
             from(components.java)
         }
     }
-    println("!!!:" + System.getenv("GITHUB_TOKEN"))
 }
 
 wrapper {
