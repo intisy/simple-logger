@@ -64,4 +64,5 @@ jobs:
         with:
           message: 'Auto-update README'
           add: 'README.md'
+          pull: '--rebase --autostash ...'
           new_branch: master
