@@ -8,6 +8,9 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -58,9 +61,3 @@ jobs:
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: Automated README.md update
-          branch: master
-          commit_user_name: GitHub Actions Bot # defaults to "github-actions[bot]"
-          commit_author: Author <actions@github.com> # defaults to "username <username@users.noreply.github.com>", where "username" belongs to the author of the commit that triggered the run
-          push_options: '--force'
