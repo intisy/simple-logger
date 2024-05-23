@@ -1,9 +1,8 @@
 name: Update README
 
 on:
-  push:
-    tags:
-      - "*"
+  release:
+    types: [published]
 
 jobs:
   update-readme:
@@ -61,6 +60,7 @@ jobs:
         run: |
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
+          git reset --hard ${{ steps.get_latest_tag.outputs.tag }}
           git add README.md
           git commit -am "Auto-update README"
-          git push
+          git push origin master
