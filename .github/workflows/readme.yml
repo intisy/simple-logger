@@ -1,0 +1,68 @@
+name: Update README
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Get latest tag
+        id: get_latest_tag
+        run: |
+          latest_tag=$(curl -s -H "Authorization: token ${{ secrets.PAT }}" \
+          https://api.github.com/repos/${{ github.repository }}/tags \
+          | jq -r '.[0].name')
+          echo "Latest tag: $latest_tag"
+          echo "::set-output name=tag::$latest_tag"
+
+      - name: Update README
+        id: update_readme
+        run: |
+          cat <<EOF > README.md
+          Downloads
+          ---------
+          Archives containing JAR files are available as [releases](https://github.com/WildePizza/SimpleLogger/releases).
+
+           * Maven (inside the `pom.xml` file)
+          ```xml
+            <dependency>
+              <groupId>com.github.WildePizza</groupId>
+              <artifactId>simple-logger</artifactId>
+              <version>${{ steps.get_latest_tag.outputs.tag }}</version>
+            </dependency>
+          ```
+           
+           * Gradle (inside the `build.gradle.kts` or `build.gradle` file)
+          ```groovy
+            repositories {
+            maven {
+                  url "https://maven.pkg.github.com/Blizzity/SimpleLogger"
+              }
+            }
+            dependencies {
+                implementation 'com.github.WildePizza:simple-logger:${{ steps.get_latest_tag.outputs.tag }}'
+            }
+          ```
+          EOF
+
+      - name: Commit changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add README.md
+          git commit -m 'Auto-update README'
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
