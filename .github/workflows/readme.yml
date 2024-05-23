@@ -64,7 +64,3 @@ jobs:
           commit_user_name: GitHub Actions Bot # defaults to "github-actions[bot]"
           commit_author: Author <actions@github.com> # defaults to "username <username@users.noreply.github.com>", where "username" belongs to the author of the commit that triggered the run
           push_options: '--force'
-          skip_dirty_check: true
-          skip_fetch: true
-          skip_checkout: true
-          disable_globbing: true
