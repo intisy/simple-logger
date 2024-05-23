@@ -55,11 +55,15 @@ jobs:
             }
           ```
           EOF
-          
-      - name: Commit changes
+
+      - name: Setup git config
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
+
+          
+      - name: Commit changes
+        run: |
           git add README.md
           git commit -m "Auto-update README"
           git push origin master
