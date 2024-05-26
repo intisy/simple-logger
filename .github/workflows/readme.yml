@@ -44,10 +44,10 @@ jobs:
               <artifactId>simple-logger</artifactId>
               <version>${{ steps.get_latest_tag.outputs.tag }}</version>
             </dependency>
-          ```
+          \`\`\`
           
            * Gradle (inside the `build.gradle.kts` or `build.gradle` file)
-          ```groovy
+          \`\`\`groovy
             repositories {
             maven {
                   url "https://maven.pkg.github.com/Blizzity/SimpleLogger"
