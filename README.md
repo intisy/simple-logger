@@ -7,15 +7,18 @@ Archives containing JAR files are available as [releases](https://github.com/Wil
   <dependency>
     <groupId>com.github.WildePizza</groupId>
     <artifactId>simple-logger</artifactId>
-    <version>1.10.24</version>
+    <version>1.10.25</version>
   </dependency>
-build.gradle.ktsbuild.gradlegroovy
+```
+
+ * Gradle (inside the  or  file)
+```groovy
   repositories {
   maven {
         url "https://maven.pkg.github.com/Blizzity/SimpleLogger"
     }
   }
   dependencies {
-      implementation 'com.github.WildePizza:simple-logger:1.10.24'
+      implementation 'com.github.WildePizza:simple-logger:1.10.25'
   }
 ```
