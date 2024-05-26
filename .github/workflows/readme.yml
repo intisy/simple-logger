@@ -35,7 +35,7 @@ jobs:
           cat <<EOF > README.md
           Downloads
           ---------
-          Archives containing JAR files are available as [releases](https://github.com/WildePizza/SimpleLogger/releases).
+          Archives containing JAR files are available as [releases](https://github.com/Blizzity/SimpleLogger/releases).
           
            * Maven (inside the `pom.xml` file)
           \`\`\`xml
