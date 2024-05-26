@@ -38,7 +38,7 @@ jobs:
           Archives containing JAR files are available as [releases](https://github.com/WildePizza/SimpleLogger/releases).
           
            * Maven (inside the `pom.xml` file)
-          ```xml
+          \`\`\`xml
             <dependency>
               <groupId>com.github.WildePizza</groupId>
               <artifactId>simple-logger</artifactId>
@@ -56,7 +56,7 @@ jobs:
             dependencies {
                 implementation 'com.github.WildePizza:simple-logger:${{ steps.get_latest_tag.outputs.tag }}'
             }
-          ```
+          \`\`\`
           EOF
           
       - name: Commit changes
