@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ef8a168-af56-43b7-b14f-940a4c4dc579" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/assign.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/readme.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/readme.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +65,7 @@
     "Gradle.Logger [build].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.google.cloudcode.ide_session_index": "20240526_0000",
+    "com.google.cloudcode.ide_session_index": "20240527_0004",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "F:/Github/SimpleLogger/.github/workflows",
@@ -113,6 +113,7 @@
     <attachedChunks>
       <set>
         <option value="jdk-11.0.22-corretto-11.0.22-4caba194b151-868cef46" />
+        <option value="jdk-17.0.9-corretto-17.0.9-8336523bb0d9-93b19daf" />
       </set>
     </attachedChunks>
   </component>
