@@ -58,32 +58,14 @@ public class SimpleLogger {
         exception(exception, null);
     }
     public void exception(Exception exception, String message) {
-        StringBuilder messageBuilder = new StringBuilder();
-        messageBuilder.append(message == null ? "" : message);
-        messageBuilder.append("Cause: ").append(exception.getCause());
-        messageBuilder.append("\nMessage: ").append(exception.getMessage());
-        messageBuilder.append("\nStacktrace: ");
-        for (StackTraceElement element: exception.getStackTrace()) {
-            messageBuilder.append("\n   ").append(element.toString());
-        }
-        message = messageBuilder.toString();
-        error(Utils.removeDuplicateLines(message));
-    }
-    private String exceptionToString(Exception exception) {
-        StringBuilder print;
-        print = new StringBuilder("Message: " + exception.getMessage()
-                + "\nStacktrace:\n");
-        for (StackTraceElement e : exception.getStackTrace()) {
-            print.append("   ").append(e.toString()).append("\n");
-        }
-        return print.toString();
+        error(Utils.removeDuplicateLines(LoggerUtils.exceptionToString(exception, message)));
     }
     public void horrible(Object log) {
         horrible(log, null);
     }
     public void horrible(Object log, String message) {
         if (log instanceof Exception) {
-            log = exceptionToString((Exception) log);
+            log = LoggerUtils.exceptionToString((Exception) log);
         }
         System.out.println(LogColor.RED.apply(message == null ? "" : message) + log);
         System.exit(0);
