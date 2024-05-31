@@ -1,13 +1,18 @@
 Downloads
 ---------
-Archives containing JAR files are available as [releases](https://github.com/Blizzity/SimpleLogger/releases).
+Archives containing JAR files are available as [releases](https://github.com/Blizzity/Blizzity/SimpleLogger/releases).
 
  * Maven (inside the  file)
 ```xml
+  <repository>
+    <id>github</id>
+    <url>https://maven.pkg.github.com/Blizzity/Blizzity/SimpleLogger</url>
+    <snapshots><enabled>true</enabled></snapshots>
+  </repository>
   <dependency>
     <groupId>com.github.WildePizza</groupId>
     <artifactId>simple-logger</artifactId>
-    <version>1.10.26</version>
+    <version>1.11</version>
   </dependency>
 ```
 
@@ -15,10 +20,14 @@ Archives containing JAR files are available as [releases](https://github.com/Bli
 ```groovy
   repositories {
   maven {
-        url "https://maven.pkg.github.com/Blizzity/SimpleLogger"
+        url "https://maven.pkg.github.com/Blizzity/Blizzity/SimpleLogger"
+        credentials {
+          username = "<your-username>"
+          password = "<your-access-token>"
+        }
     }
   }
   dependencies {
-      implementation 'com.github.WildePizza:simple-logger:1.10.26'
+      implementation 'com.github.WildePizza:simple-logger:1.11'
   }
 ```
