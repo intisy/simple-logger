@@ -11,8 +11,12 @@ public class LoggerBuilder {
         logger.setEnablePercent(enable);
         return this;
     }
-    public LoggerBuilder withEnableShortLog(boolean enable) {
-        logger.setEnableShortLog(enable);
+    public LoggerBuilder withEnableLogToFile(boolean enable) {
+        logger.setEnableLogToFile(enable);
+        return this;
+    }
+    public LoggerBuilder withEnableDuplicateLog(boolean enable) {
+        logger.setEnableDuplicateLog(enable);
         return this;
     }
     public SimpleLogger build() {

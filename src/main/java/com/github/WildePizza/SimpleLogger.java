@@ -1,5 +1,11 @@
 package com.github.WildePizza;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +14,8 @@ public class SimpleLogger {
     private int logLevel;
     private int percent = 0;
     private boolean enablePercent;
+    private boolean enableLogToFile;
+    private boolean enableDuplicateLog;
     private long lastTime = 0;
     private final long startTime;
     String major;
@@ -19,6 +27,8 @@ public class SimpleLogger {
         this.logLevel = 4;
         this.enableShortLog = false;
         this.startTime = System.currentTimeMillis();
+        this.enableLogToFile = false;
+        this.enableDuplicateLog = false;
     }
     public void setEnablePercent(boolean enable) {
         enablePercent = enable;
@@ -28,6 +38,18 @@ public class SimpleLogger {
     }
     public void setLogLevel(int level) {
         logLevel = level;
+    }
+    public void setEnableLogToFile(boolean enable) {
+        enableLogToFile = enable;
+    }
+    public void setEnableDuplicateLog(boolean enable) {
+        enableDuplicateLog = enable;
+    }
+    public boolean getEnableDuplicateLog() {
+        return enableDuplicateLog;
+    }
+    public boolean getEnableLogToFile() {
+        return enableLogToFile;
     }
     public boolean getEnablePercent() {
         return enablePercent;
@@ -96,8 +118,30 @@ public class SimpleLogger {
                 log = "(" + ((int) ((double) (System.currentTimeMillis()-startTime)/lastTime*100)) + "%) " + log.toString();
             else
                 log = "(" + percent + "%) " + log.toString();
-        if (!last.equals(String.valueOf(log))) {
+        if (enableDuplicateLog || !last.equals(String.valueOf(log))) {
             last = String.valueOf(log);
+            if (enableLogToFile) {
+                LocalDate today = LocalDate.now();
+                String format = "yyyy-MM-dd-HH";
+                String formattedDate = today.format(DateTimeFormatter.ofPattern(format));
+                File logFile = new File(formattedDate + ".log");
+                try {
+                    if (!logFile.exists() && !logFile.createNewFile())
+                        throw new RuntimeException("Failed to create log file");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                try (FileWriter writer = new FileWriter(logFile, true)) {
+                    // Wrap the FileWriter in a BufferedWriter for better performance
+                    BufferedWriter bufferedWriter = new BufferedWriter(writer);
+                    // Write the content to the file
+                    bufferedWriter.write(String.valueOf(log));
+                    // Flush the writer to ensure data is saved to the file
+                    bufferedWriter.flush();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
             if (!enableShortLog)
                 System.out.println(LogColor.WHITE.apply(String.valueOf(log)));
             else {
