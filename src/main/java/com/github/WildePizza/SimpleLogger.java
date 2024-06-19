@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +21,15 @@ public class SimpleLogger {
     private final long startTime;
     String major;
     String last = "";
+    static String formattedDateTime;
+    static File logFile;
     private boolean enableShortLog;
     final List<String> logs = new ArrayList<>();
+    static {
+        LocalDateTime now = LocalDateTime.now();
+        String format = "yyyy-MM-dd-HH-mm";
+        String formattedDateTime = now.format(DateTimeFormatter.ofPattern(format));
+    }
     public SimpleLogger() {
         this.enablePercent = false;
         this.logLevel = 4;
@@ -121,22 +129,25 @@ public class SimpleLogger {
         if (enableDuplicateLog || !last.equals(String.valueOf(log))) {
             last = String.valueOf(log);
             if (enableLogToFile) {
-                LocalDate today = LocalDate.now();
-                String format = "yyyy-MM-dd-HH";
-                String formattedDate = today.format(DateTimeFormatter.ofPattern(format));
-                File logFile = new File(formattedDate + ".log");
                 try {
-                    if (!logFile.exists() && !logFile.createNewFile())
-                        throw new RuntimeException("Failed to create log file");
+                    if (logFile == null) {
+                        logFile = new File(formattedDateTime + ".log");
+                        if (!logFile.exists())
+                            if (!logFile.createNewFile())
+                                throw new RuntimeException("Failed to create log file");
+                            else {
+                                int i = 1;
+                                while (!new File(formattedDateTime + i + ".log").createNewFile()) {
+                                    i++;
+                                }
+                            }
+                    }
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
                 try (FileWriter writer = new FileWriter(logFile, true)) {
-                    // Wrap the FileWriter in a BufferedWriter for better performance
                     BufferedWriter bufferedWriter = new BufferedWriter(writer);
-                    // Write the content to the file
                     bufferedWriter.write(String.valueOf(log));
-                    // Flush the writer to ensure data is saved to the file
                     bufferedWriter.flush();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
