@@ -146,7 +146,7 @@ public class SimpleLogger {
                 }
                 try (FileWriter writer = new FileWriter(logFile, true)) {
                     BufferedWriter bufferedWriter = new BufferedWriter(writer);
-                    bufferedWriter.write(String.valueOf(log));
+                    bufferedWriter.write(log + "\n");
                     bufferedWriter.flush();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
