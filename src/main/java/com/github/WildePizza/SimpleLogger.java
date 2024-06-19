@@ -28,7 +28,7 @@ public class SimpleLogger {
     static {
         LocalDateTime now = LocalDateTime.now();
         String format = "yyyy-MM-dd-HH-mm";
-        String formattedDateTime = now.format(DateTimeFormatter.ofPattern(format));
+        formattedDateTime = now.format(DateTimeFormatter.ofPattern(format));
     }
     public SimpleLogger() {
         this.enablePercent = false;
@@ -132,15 +132,14 @@ public class SimpleLogger {
                 try {
                     if (logFile == null) {
                         logFile = new File(formattedDateTime + ".log");
-                        if (!logFile.exists())
-                            if (!logFile.createNewFile())
-                                throw new RuntimeException("Failed to create log file");
-                            else {
-                                int i = 1;
-                                while (!new File(formattedDateTime + i + ".log").createNewFile()) {
-                                    i++;
-                                }
+                        if (logFile.exists()) {
+                            int i = 1;
+                            while (!(logFile = new File(formattedDateTime + i + ".log")).exists()) {
+                                i++;
                             }
+                        }
+                        if (!logFile.createNewFile())
+                            throw new RuntimeException("Failed to create log file");
                     }
                 } catch (IOException e) {
                     throw new RuntimeException(e);
