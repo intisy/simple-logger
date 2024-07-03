@@ -22,6 +22,7 @@ public class SimpleLogger {
     String last = "";
     static String formattedDateTime;
     private File logFile;
+    private File logFolder;
     private boolean enableShortLog;
     final List<String> logs = new ArrayList<>();
     static {
@@ -38,8 +39,8 @@ public class SimpleLogger {
         this.enableDuplicateLog = false;
     }
 
-    public void setLogFile(File logFile) {
-        this.logFile = logFile;
+    public void setLogFolder(File logFolder) {
+        this.logFolder = logFolder;
     }
 
     public void setEnablePercent(boolean enable) {
@@ -134,11 +135,14 @@ public class SimpleLogger {
             last = String.valueOf(log);
             if (enableLogToFile) {
                 try {
+                    if (!logFolder.exists())
+                        if (!logFolder.mkdirs())
+                            throw new RuntimeException("Failed to create log folder");
                     if (logFile == null) {
-                        logFile = new File(formattedDateTime + ".log");
+                        logFile = new File(logFolder.getAbsoluteFile() + "/" + formattedDateTime + ".log");
                         if (logFile.exists()) {
                             int i = 1;
-                            while (!(logFile = new File(formattedDateTime + i + ".log")).exists()) {
+                            while (!(logFile = new File(logFolder.getAbsoluteFile() + "/" + formattedDateTime + i + ".log")).exists()) {
                                 i++;
                             }
                         }

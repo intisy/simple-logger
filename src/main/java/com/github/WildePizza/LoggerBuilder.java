@@ -17,8 +17,8 @@ public class LoggerBuilder {
         logger.setEnableLogToFile(enable);
         return this;
     }
-    public LoggerBuilder withLogFile(File file) {
-        logger.setLogFile(file);
+    public LoggerBuilder setLogFolder(File file) {
+        logger.setLogFolder(file);
         return this;
     }
     public LoggerBuilder withEnableDuplicateLog(boolean enable) {
