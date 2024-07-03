@@ -17,7 +17,7 @@ public class LoggerBuilder {
         logger.setEnableLogToFile(enable);
         return this;
     }
-    public LoggerBuilder setLogFolder(File file) {
+    public LoggerBuilder withLogFolder(File file) {
         logger.setLogFolder(file);
         return this;
     }
