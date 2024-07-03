@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ public class SimpleLogger {
     String major;
     String last = "";
     static String formattedDateTime;
-    static File logFile;
+    private File logFile;
     private boolean enableShortLog;
     final List<String> logs = new ArrayList<>();
     static {
@@ -38,6 +37,11 @@ public class SimpleLogger {
         this.enableLogToFile = false;
         this.enableDuplicateLog = false;
     }
+
+    public void setLogFile(File logFile) {
+        this.logFile = logFile;
+    }
+
     public void setEnablePercent(boolean enable) {
         enablePercent = enable;
     }
