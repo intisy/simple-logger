@@ -87,7 +87,7 @@ public class SimpleLogger {
         return this.percent;
     }
     public void error(Object log) {
-        System.out.println(LogColor.RED.apply(String.valueOf(log)));
+        log(LogColor.RED.apply(String.valueOf(log)));
     }
     public void exception(Exception exception) {
         exception(exception, null);
@@ -102,28 +102,31 @@ public class SimpleLogger {
         if (log instanceof Exception) {
             log = LoggerUtils.exceptionToString((Exception) log);
         }
-        System.out.println(LogColor.RED.apply(message == null ? "" : message) + log);
+        log(LogColor.RED.apply(message == null ? "" : message) + log);
         System.exit(0);
     }
     public void debug(Object log) {
         if (logLevel >= 5)
-            log(LogColor.WHITE.apply(String.valueOf(log)), false);
+            log(LogColor.WHITE.apply(String.valueOf(log)));
     }
     public void note(Object log) {
         if (logLevel >= 4)
-            log(LogColor.GRAY.apply(String.valueOf(log)), false);
+            log(LogColor.GRAY.apply(String.valueOf(log)));
     }
     public void success(Object log) {
         if (logLevel >= 3)
-            log(LogColor.GREEN.apply(String.valueOf(log)), false);
+            log(LogColor.GREEN.apply(String.valueOf(log)));
     }
     public void warning(Object log) {
         if (logLevel >= 2)
-            log(LogColor.YELLOW.apply(String.valueOf(log)), false);
+            log(LogColor.YELLOW.apply(String.valueOf(log)));
     }
     public void major(Object log) {
         if (logLevel >= 1)
             log(LogColor.BLUE_BACKGROUND.apply(String.valueOf(log)), true);
+    }
+    public void log(Object log) {
+        log(log, false);
     }
     public void log(Object log, boolean m) {
         if (enablePercent)
