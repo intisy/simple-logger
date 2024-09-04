@@ -1,4 +1,4 @@
-package com.github.WildePizza;
+package io.github.intisy;
 
 public class LoggerUtils {
     public static String exceptionToString(Exception exception) {

@@ -1,4 +1,4 @@
-package com.github.WildePizza;
+package io.github.intisy;
 
 import java.io.BufferedWriter;
 import java.io.File;

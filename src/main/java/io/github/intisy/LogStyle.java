@@ -1,4 +1,4 @@
-package com.github.WildePizza;
+package io.github.intisy;
 
 @SuppressWarnings("unused")
 enum LogStyle {

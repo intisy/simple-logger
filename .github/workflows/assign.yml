@@ -5,15 +5,9 @@ on:
   pull_request:
     types: [opened]
 jobs:
-  run:
-    runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
-    steps:
-    - name: 'Auto-assign issue'
-      uses: pozil/auto-assign-issue@v1
-      with:
-          repo-token: ${{ secrets.PAT }}
-          assignees: WildePizza
-          numOfAssignee: 1
+  call-reusable-workflow:
+    uses: intisy/workflows/.github/workflows/assign.yml@main
+    with:
+      assignees: "intisy"
+    secrets:
+      envPAT: ${{ secrets.PAT }}
