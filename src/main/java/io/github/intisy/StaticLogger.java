@@ -21,4 +21,10 @@ public class StaticLogger {
     public static void major(Object string) {
         logger.major(string);
     }
+    public void exception(Exception exception) {
+        exception(exception, null);
+    }
+    public void exception(Exception exception, String message) {
+        logger.exception(exception, message);
+    }
 }
