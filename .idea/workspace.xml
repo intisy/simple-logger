@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ef8a168-af56-43b7-b14f-940a4c4dc579" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/readme.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/readme.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/intisy/LoggerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/LoggerUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/intisy/SimpleLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/SimpleLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/intisy/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/readme.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/intisy/Test.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +29,18 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="SimpleLogger" type="f1a62948:ProjectNode" />
+                <item name="simple-logger" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="simple-logger" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="simple-logger" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -119,6 +125,7 @@
     <attachedChunks>
       <set>
         <option value="jdk-11.0.22-corretto-11.0.22-4caba194b151-868cef46" />
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
         <option value="jdk-17.0.9-corretto-17.0.9-8336523bb0d9-93b19daf" />
       </set>
     </attachedChunks>
