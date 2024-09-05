@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ef8a168-af56-43b7-b14f-940a4c4dc579" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/StaticLogger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/WildePizza/EmptyLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/EmptyLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/WildePizza/LogColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/LogColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/WildePizza/LogStyle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/LogStyle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/WildePizza/LoggerBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/LoggerBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/WildePizza/SimpleLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/SimpleLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/WildePizza/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,20 +66,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Logger [build].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.google.cloudcode.ide_session_index": "20240517_0004",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/wilde/Documents/Github/SimpleLogger",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Logger [build].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.google.cloudcode.ide_session_index&quot;: &quot;20240517_0004&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/wilde/Documents/Github/SimpleLogger&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Github\SimpleLogger\.github\workflows" />
