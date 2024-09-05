@@ -32,7 +32,7 @@ public class SimpleLogger {
     }
     public SimpleLogger() {
         this.enablePercent = false;
-        this.logLevel = 4;
+        this.logLevel = LogLevel.NOTE;
         this.enableShortLog = false;
         this.startTime = System.currentTimeMillis();
         this.enableLogToFile = false;
@@ -106,23 +106,23 @@ public class SimpleLogger {
         System.exit(0);
     }
     public void debug(Object log) {
-        if (logLevel >= 5)
+        if (logLevel >= LogLevel.DEBUG)
             log(LogColor.WHITE.apply(String.valueOf(log)));
     }
     public void note(Object log) {
-        if (logLevel >= 4)
+        if (logLevel >= LogLevel.NOTE)
             log(LogColor.GRAY.apply(String.valueOf(log)));
     }
     public void success(Object log) {
-        if (logLevel >= 3)
+        if (logLevel >= LogLevel.SUCCESS)
             log(LogColor.GREEN.apply(String.valueOf(log)));
     }
     public void warning(Object log) {
-        if (logLevel >= 2)
+        if (logLevel >= LogLevel.WARN)
             log(LogColor.YELLOW.apply(String.valueOf(log)));
     }
     public void major(Object log) {
-        if (logLevel >= 1)
+        if (logLevel >= LogLevel.MAJOR)
             log(LogColor.BLUE_BACKGROUND.apply(String.valueOf(log)), true);
     }
     public void log(Object log) {

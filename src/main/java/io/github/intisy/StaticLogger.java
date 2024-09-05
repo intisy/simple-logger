@@ -1,7 +1,7 @@
 package io.github.intisy;
 
 public class StaticLogger {
-    private static final SimpleLogger logger = new SimpleLogger();
+    private static final SimpleLogger logger = new LoggerBuilder().withLogLevel(LogLevel.DEBUG).build();
     public static void debug(Object string) {
         debug(string, true);
     }
