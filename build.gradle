@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 
-group = "com.github.WildePizza"
+group = "io.github.intisy"
 version = project.hasProperty('version') ? project.version : '1.0'
 
 repositories {

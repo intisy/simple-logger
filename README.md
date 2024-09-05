@@ -10,7 +10,7 @@ Archives containing JAR files are available as [releases](https://github.com/Bli
     <snapshots><enabled>true</enabled></snapshots>
   </repository>
   <dependency>
-    <groupId>com.github.WildePizza</groupId>
+    <groupId>io.github.intisy</groupId>
     <artifactId>simple-logger</artifactId>
     <version>1.12.7</version>
   </dependency>
@@ -28,6 +28,6 @@ Archives containing JAR files are available as [releases](https://github.com/Bli
     }
   }
   dependencies {
-      implementation 'com.github.WildePizza:simple-logger:1.12.7'
+      implementation 'io.github.intisy:simple-logger:1.12.7'
   }
 ```

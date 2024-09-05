@@ -45,7 +45,7 @@ jobs:
               <snapshots><enabled>true</enabled></snapshots>
             </repository>
             <dependency>
-              <groupId>com.github.WildePizza</groupId>
+              <groupId>io.github.intisy</groupId>
               <artifactId>simple-logger</artifactId>
               <version>${{ steps.get_latest_tag.outputs.tag }}</version>
             </dependency>
@@ -63,7 +63,7 @@ jobs:
               }
             }
             dependencies {
-                implementation 'com.github.WildePizza:simple-logger:${{ steps.get_latest_tag.outputs.tag }}'
+                implementation 'io.github.intisy:simple-logger:${{ steps.get_latest_tag.outputs.tag }}'
             }
           \`\`\`
           EOF
