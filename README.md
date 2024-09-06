@@ -14,7 +14,7 @@ Archives containing JAR files are available as [releases](https://github.com/int
   <dependency>
       <groupId>io.github.intisy</groupId>
       <artifactId>Blizzity/SimpleLogger</artifactId>
-      <version>1.13.5</version>
+      <version>1.13.7</version>
   </dependency>
 ```
 
@@ -41,7 +41,7 @@ Archives containing JAR files are available as [releases](https://github.com/int
       }
   }
   dependencies {
-      implementation 'io.github.intisy:Blizzity/SimpleLogger:1.13.5'
+      implementation 'io.github.intisy:Blizzity/SimpleLogger:1.13.7'
   }
 ```
 
@@ -53,7 +53,7 @@ Archives containing JAR files are available as [releases](https://github.com/int
       id "io.github.intisy.github-gradle" version "1.1"
   }
   dependencies {
-      githubImplementation "intisy:Blizzity/SimpleLogger:1.13.5"
+      githubImplementation "intisy:Blizzity/SimpleLogger:1.13.7"
   }
 ```
 
