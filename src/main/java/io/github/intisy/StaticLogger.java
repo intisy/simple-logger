@@ -21,7 +21,7 @@ public class StaticLogger {
     public static void major(Object string) {
         logger.major(string);
     }
-    public void error(Object log) {
+    public static void error(Object log) {
         logger.error(log);
     }
     public static void exception(Exception exception) {
