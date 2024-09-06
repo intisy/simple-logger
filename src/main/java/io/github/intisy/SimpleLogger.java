@@ -106,8 +106,13 @@ public class SimpleLogger {
         System.exit(0);
     }
     public void debug(Object log) {
-        if (logLevel >= LogLevel.DEBUG)
-            log(LogColor.WHITE.apply(String.valueOf(log)));
+        if (logLevel >= LogLevel.DEBUG) {
+            StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+            StackTraceElement element = stackTrace[3];
+            String fileName = element.getFileName();
+            int lineNumber = element.getLineNumber();
+            log(LogColor.WHITE.apply(log + " (" + fileName + ":" + lineNumber + ")"));
+        }
     }
     public void note(Object log) {
         if (logLevel >= LogLevel.NOTE)
@@ -123,7 +128,7 @@ public class SimpleLogger {
     }
     public void major(Object log) {
         if (logLevel >= LogLevel.MAJOR)
-            log(LogColor.BLUE_BACKGROUND.apply(String.valueOf(log)), true);
+            log(LogColor.BLUE_BACKGROUND.apply(LogColor.GRAY.apply(String.valueOf(log))), true);
     }
     public void log(Object log) {
         log(log, false);

@@ -6,8 +6,9 @@ public class StaticLogger {
         debug(string, true);
     }
     public static void debug(Object string, boolean log) {
-        if (log)
+        if (log) {
             logger.debug(string);
+        }
     }
     public static void note(Object string) {
         logger.note(string);

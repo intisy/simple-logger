@@ -13,6 +13,11 @@ java {
     withJavadocJar()
 }
 
+dependencies {
+    testImplementation(platform("org.junit:junit-bom:5.9.1"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+}
+
 publishing {
     repositories {
         maven {
@@ -29,6 +34,16 @@ publishing {
             artifactId = 'simple-logger'
             from(components.java)
         }
+    }
+}
+
+test {
+    useJUnitPlatform()
+    outputs.upToDateWhen { false }
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+        stackTraceFilters "entryPoint"
     }
 }
 
