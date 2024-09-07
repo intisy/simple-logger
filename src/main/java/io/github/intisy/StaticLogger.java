@@ -13,6 +13,9 @@ public class StaticLogger {
     public static void note(Object string) {
         logger.note(string);
     }
+    public static void printStackTrace(Object string) {
+        logger.printStackTrace();
+    }
     public static void success(Object string) {
         logger.success(string);
     }

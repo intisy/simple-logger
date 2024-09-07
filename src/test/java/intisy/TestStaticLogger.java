@@ -12,5 +12,6 @@ public class TestStaticLogger {
         StaticLogger.warning(message);
         StaticLogger.major(message);
         StaticLogger.note(message);
+        StaticLogger.printStackTrace(message);
     }
 }

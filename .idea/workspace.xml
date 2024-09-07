@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ef8a168-af56-43b7-b14f-940a4c4dc579" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/intisy/TestStaticLogger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/intisy/SimpleLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/SimpleLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/intisy/StaticLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/StaticLogger.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

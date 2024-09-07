@@ -89,6 +89,11 @@ public class SimpleLogger {
     public void error(Object log) {
         log(LogColor.RED.apply(String.valueOf(log)));
     }
+    public void printStackTrace() {
+        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+            error(element.toString());
+        }
+    }
     public void exception(Exception exception) {
         exception(exception, null);
     }
