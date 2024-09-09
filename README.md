@@ -1,6 +1,6 @@
 # 
 
-Archives containing JAR files are available as [releases](https://github.com/intisy/Blizzity/SimpleLogger/releases).
+Archives containing JAR files are available as [releases](https://github.com/intisy/intisy/simple-logger/releases).
 
 ## Usage in private repos (faster)
 
@@ -8,13 +8,13 @@ Archives containing JAR files are available as [releases](https://github.com/int
 ```xml
   <repository>
       <id>github</id>
-      <url>https://maven.pkg.github.com/intisy/Blizzity/SimpleLogger</url>
+      <url>https://maven.pkg.github.com/intisy/intisy/simple-logger</url>
       <snapshots><enabled>true</enabled></snapshots>
   </repository>
   <dependency>
       <groupId>io.github.intisy</groupId>
-      <artifactId>Blizzity/SimpleLogger</artifactId>
-      <version>1.13.8</version>
+      <artifactId>intisy/simple-logger</artifactId>
+      <version>1.14</version>
   </dependency>
 ```
 
@@ -33,7 +33,7 @@ Archives containing JAR files are available as [releases](https://github.com/int
 ```groovy
   repositories {
       maven {
-          url "https://maven.pkg.github.com/intisy/Blizzity/SimpleLogger"
+          url "https://maven.pkg.github.com/intisy/intisy/simple-logger"
           credentials {
               username = "<your-username>"
               password = "<your-access-token>"
@@ -41,7 +41,7 @@ Archives containing JAR files are available as [releases](https://github.com/int
       }
   }
   dependencies {
-      implementation 'io.github.intisy:Blizzity/SimpleLogger:1.13.8'
+      implementation 'io.github.intisy:intisy/simple-logger:1.14'
   }
 ```
 
@@ -53,7 +53,7 @@ Archives containing JAR files are available as [releases](https://github.com/int
       id "io.github.intisy.github-gradle" version "1.1"
   }
   dependencies {
-      githubImplementation "intisy:Blizzity/SimpleLogger:1.13.8"
+      githubImplementation "intisy:intisy/simple-logger:1.14"
   }
 ```
 
