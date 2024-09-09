@@ -1,4 +1,4 @@
-package io.github.intisy;
+package io.github.intisy.simple.logger;
 
 import java.util.Arrays;
 import java.util.LinkedHashSet;

@@ -1,6 +1,6 @@
 package intisy;
 
-import io.github.intisy.StaticLogger;
+import io.github.intisy.simple.logger.StaticLogger;
 import org.junit.jupiter.api.Test;
 
 public class TestStaticLogger {

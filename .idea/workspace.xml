@@ -5,8 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ef8a168-af56-43b7-b14f-940a4c4dc579" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/intisy/SimpleLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/SimpleLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/intisy/EmptyLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/simple/logger/EmptyLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/intisy/LogColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/simple/logger/LogColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/intisy/LogLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/simple/logger/LogLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/intisy/LogStyle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/simple/logger/LogStyle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/intisy/LoggerBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/simple/logger/LoggerBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/intisy/LoggerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/simple/logger/LoggerUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/intisy/SimpleLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/simple/logger/SimpleLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/intisy/StaticLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/simple/logger/StaticLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/intisy/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/intisy/simple/logger/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/intisy/TestStaticLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/intisy/TestStaticLogger.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +93,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Documents/IntelliJ/simple-logger/src/test/java&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Documents/IntelliJ/simple-logger&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -95,7 +107,7 @@
       <recent name="F:\Github\SimpleLogger" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.TestStaticLogger.test">
+  <component name="RunManager" selected="Gradle.Logger [build]">
     <configuration name="Logger [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -144,8 +156,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.TestStaticLogger.test" />
         <item itemvalue="Gradle.Logger [build]" />
+        <item itemvalue="Gradle.TestStaticLogger.test" />
       </list>
     </recent_temporary>
   </component>

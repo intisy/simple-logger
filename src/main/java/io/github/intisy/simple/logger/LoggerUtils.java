@@ -1,4 +1,4 @@
-package io.github.intisy;
+package io.github.intisy.simple.logger;
 
 public class LoggerUtils {
     public static String exceptionToString(Exception exception) {

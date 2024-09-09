@@ -1,4 +1,4 @@
-package io.github.intisy;
+package io.github.intisy.simple.logger;
 
 public class StaticLogger {
     private static final SimpleLogger logger = new LoggerBuilder().withLogLevel(LogLevel.DEBUG).build();
