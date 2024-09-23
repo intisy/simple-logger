@@ -35,7 +35,7 @@ public class SimpleLogger {
         this.logLevel = LogLevel.NOTE;
         this.enableShortLog = false;
         this.startTime = System.currentTimeMillis();
-        this.enableLogToFile = false;
+        this.enableLogToFile = true;
         this.enableDuplicateLog = false;
     }
 
@@ -87,7 +87,16 @@ public class SimpleLogger {
         return this.percent;
     }
     public void error(Object log) {
-        log(LogColor.RED.apply(String.valueOf(log)));
+        error(log, 4);
+    }
+    public void error(Object log, int line) {
+        if (logLevel >= LogLevel.WARN) {
+            StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+            StackTraceElement element = stackTrace[3];
+            String fileName = element.getFileName();
+            int lineNumber = element.getLineNumber();
+            log(LogColor.RED.apply(log + getStackTraceElement(line)));
+        }
     }
     public void printStackTrace() {
         for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
@@ -111,13 +120,19 @@ public class SimpleLogger {
         System.exit(0);
     }
     public void debug(Object log) {
+        debug(log, 4);
+    }
+    public void debug(Object log, int line) {
         if (logLevel >= LogLevel.DEBUG) {
-            StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-            StackTraceElement element = stackTrace[3];
-            String fileName = element.getFileName();
-            int lineNumber = element.getLineNumber();
-            log(LogColor.WHITE.apply(log + " (" + fileName + ":" + lineNumber + ")"));
+            log(LogColor.WHITE.apply(log + getStackTraceElement(line)));
         }
+    }
+    private String getStackTraceElement(int line) {
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+        StackTraceElement element = stackTrace[line];
+        String fileName = element.getFileName();
+        int lineNumber = element.getLineNumber();
+        return " (" + fileName + ":" + lineNumber + ")";
     }
     public void note(Object log) {
         if (logLevel >= LogLevel.NOTE)
@@ -128,8 +143,16 @@ public class SimpleLogger {
             log(LogColor.GREEN.apply(String.valueOf(log)));
     }
     public void warning(Object log) {
-        if (logLevel >= LogLevel.WARN)
-            log(LogColor.YELLOW.apply(String.valueOf(log)));
+        warning(log, 4);
+    }
+    public void warning(Object log, int line) {
+        if (logLevel >= LogLevel.WARN) {
+            StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+            StackTraceElement element = stackTrace[3];
+            String fileName = element.getFileName();
+            int lineNumber = element.getLineNumber();
+            log(LogColor.YELLOW.apply(log + getStackTraceElement(line)));
+        }
     }
     public void major(Object log) {
         if (logLevel >= LogLevel.MAJOR)
@@ -146,7 +169,7 @@ public class SimpleLogger {
                 log = "(" + percent + "%) " + log.toString();
         if (enableDuplicateLog || !last.equals(String.valueOf(log))) {
             last = String.valueOf(log);
-            if (enableLogToFile) {
+            if (enableLogToFile && logFolder != null) {
                 try {
                     if (!logFolder.exists())
                         if (!logFolder.mkdirs())
