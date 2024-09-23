@@ -14,7 +14,7 @@ Archives containing JAR files are available as [releases](https://github.com/int
   <dependency>
       <groupId>io.github.intisy</groupId>
       <artifactId>intisy/simple-logger</artifactId>
-      <version>1.14.1</version>
+      <version>1.14.2</version>
   </dependency>
 ```
 
@@ -23,8 +23,8 @@ Archives containing JAR files are available as [releases](https://github.com/int
   <servers>
       <server>
           <id>github</id>
-          <username><your-username></username>
-          <password><your-access-token></password>
+          <username>your-username</username>
+          <password>your-access-token</password>
       </server>
   </servers>
 ```
@@ -41,7 +41,7 @@ Archives containing JAR files are available as [releases](https://github.com/int
       }
   }
   dependencies {
-      implementation 'io.github.intisy:intisy/simple-logger:1.14.1'
+      implementation 'io.github.intisy:intisy/simple-logger:1.14.2'
   }
 ```
 
@@ -53,7 +53,7 @@ Archives containing JAR files are available as [releases](https://github.com/int
       id "io.github.intisy.github-gradle" version "1.1"
   }
   dependencies {
-      githubImplementation "intisy:intisy/simple-logger:1.14.1"
+      githubImplementation "intisy:intisy/simple-logger:1.14.2"
   }
 ```
 
