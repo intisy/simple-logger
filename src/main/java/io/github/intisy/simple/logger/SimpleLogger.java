@@ -190,7 +190,7 @@ public class SimpleLogger {
                 }
                 try (FileWriter writer = new FileWriter(logFile, true)) {
                     BufferedWriter bufferedWriter = new BufferedWriter(writer);
-                    bufferedWriter.write(log + "\n");
+                    bufferedWriter.write(LogColor.removeAll((String) log) + "\n");
                     bufferedWriter.flush();
                 } catch (IOException e) {
                     throw new RuntimeException(e);

@@ -13,7 +13,7 @@ public class StaticLogger {
     public static void note(Object string) {
         logger.note(string);
     }
-    public static void printStackTrace(Object string) {
+    public static void printStackTrace() {
         logger.printStackTrace();
     }
     public static void success(Object string) {

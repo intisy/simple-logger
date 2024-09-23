@@ -31,5 +31,13 @@ enum LogColor {
     public String apply(String text) {
         return code + text + RESET.code;
     }
+    public String remove(String text) {
+        return text.replace(code, "");
+    }
+    public static String removeAll(String text) {
+        for (LogColor value : values())
+            text = value.remove(text);
+        return text;
+    }
 }
 
