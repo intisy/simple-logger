@@ -32,10 +32,4 @@ public class StaticLogger {
     public static void error(Object log, Exception exception) {
         logger.error(log, exception, 4);
     }
-    public static void exception(Exception exception) {
-        exception(exception, null);
-    }
-    public static void exception(Exception exception, String message) {
-        logger.exception(exception, message);
-    }
 }
