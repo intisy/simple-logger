@@ -87,14 +87,20 @@ public class SimpleLogger {
         return this.percent;
     }
     public void error(Object log) {
-        error(log, 4);
+        error(log, 5);
     }
     public void error(Object log, int line) {
+        error(log, null, line);
+    }
+    public void error(Object log, Exception exception, int line) {
         if (logLevel >= LogLevel.WARN) {
             StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
             StackTraceElement element = stackTrace[3];
             String fileName = element.getFileName();
             int lineNumber = element.getLineNumber();
+            if (exception != null) {
+                log += ": " + exception;
+            }
             log(LogColor.RED.apply(log + getStackTraceElement(line)));
         }
     }
@@ -112,11 +118,11 @@ public class SimpleLogger {
     public void horrible(Object log) {
         horrible(log, null);
     }
-    public void horrible(Object log, String message) {
-        if (log instanceof Exception) {
-            log = LoggerUtils.exceptionToString((Exception) log);
+    public void horrible(Object log, Exception exception) {
+        if (exception != null) {
+            log += LoggerUtils.exceptionToString((Exception) log);
         }
-        log(LogColor.RED.apply(message == null ? "" : message) + log);
+        log(LogColor.RED.apply((String) log));
         System.exit(0);
     }
     public void debug(Object log) {

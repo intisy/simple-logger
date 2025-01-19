@@ -1,5 +1,6 @@
 package io.github.intisy.simple.logger;
 
+@SuppressWarnings("unused")
 public class StaticLogger {
     private static final SimpleLogger logger = new LoggerBuilder().withLogLevel(LogLevel.DEBUG).build();
     public static void debug(Object string) {
@@ -26,7 +27,10 @@ public class StaticLogger {
         logger.major(string);
     }
     public static void error(Object log) {
-        logger.error(log, 4);
+        logger.error(log, 5);
+    }
+    public static void error(Object log, Exception exception) {
+        logger.error(log, exception, 4);
     }
     public static void exception(Exception exception) {
         exception(exception, null);
