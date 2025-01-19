@@ -9,7 +9,7 @@ public class LoggerUtils {
     public static String exceptionToString(Exception exception) {
         return exceptionToString(exception, null);
     }
-    public static String exceptionToString(Exception exception, String message) {
+    public static String exceptionToString(Exception exception, Object message) {
         StringBuilder messageBuilder = new StringBuilder();
         messageBuilder.append(message == null ? "" : message);
         messageBuilder.append("Cause: ").append(exception.getCause());
@@ -18,8 +18,7 @@ public class LoggerUtils {
         for (StackTraceElement element: exception.getStackTrace()) {
             messageBuilder.append("\n   ").append(element.toString());
         }
-        message = messageBuilder.toString();
-        return message;
+        return messageBuilder.toString();
     }
     public static void response(SimpleLogger logger, HttpURLConnection response) throws IOException {
         BufferedReader errorIn = new BufferedReader(new InputStreamReader(response.getErrorStream()));
