@@ -92,6 +92,12 @@ public class SimpleLogger {
     public void error(Object log, int line) {
         error(log, null, line);
     }
+    public void error(Exception exception) {
+        error(null, exception, 5);
+    }
+    public void error(Object log, Exception exception) {
+        error(log, exception, 4);
+    }
     public void error(Object log, Exception exception, int line) {
         if (logLevel >= LogLevel.WARN) {
             StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
@@ -99,7 +105,7 @@ public class SimpleLogger {
             String fileName = element.getFileName();
             int lineNumber = element.getLineNumber();
             if (exception != null) {
-                log = Utils.removeDuplicateLines(LoggerUtils.exceptionToString(exception, log.toString()));
+                log = Utils.removeDuplicateLines(LoggerUtils.exceptionToString(exception, log));
             } else {
                 log += getStackTraceElement(line);
             }
