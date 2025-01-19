@@ -132,7 +132,7 @@ public class SimpleLogger {
     }
     public void debug(Object log, int line) {
         if (logLevel >= LogLevel.DEBUG) {
-            log(LogColor.WHITE.apply(log + getStackTraceElement(line)));
+            log(LogColor.GRAY.apply(log + getStackTraceElement(line)));
         }
     }
     private String getStackTraceElement(int line) {
@@ -144,7 +144,7 @@ public class SimpleLogger {
     }
     public void note(Object log) {
         if (logLevel >= LogLevel.NOTE)
-            log(LogColor.GRAY.apply(String.valueOf(log)));
+            log(LogColor.WHITE.apply(String.valueOf(log)));
     }
     public void success(Object log) {
         if (logLevel >= LogLevel.SUCCESS)
