@@ -99,21 +99,17 @@ public class SimpleLogger {
             String fileName = element.getFileName();
             int lineNumber = element.getLineNumber();
             if (exception != null) {
-                log += ": " + exception;
+                log = Utils.removeDuplicateLines(LoggerUtils.exceptionToString(exception, log.toString()));
+            } else {
+                log += getStackTraceElement(line);
             }
-            log(LogColor.RED.apply(log + getStackTraceElement(line)));
+            log(LogColor.RED.apply(log.toString()));
         }
     }
     public void printStackTrace() {
         for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
             error(element.toString());
         }
-    }
-    public void exception(Exception exception) {
-        exception(exception, null);
-    }
-    public void exception(Exception exception, String message) {
-        error(Utils.removeDuplicateLines(LoggerUtils.exceptionToString(exception, message)));
     }
     public void horrible(Object log) {
         horrible(log, null);
