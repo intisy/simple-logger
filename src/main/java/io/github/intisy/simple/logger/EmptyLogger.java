@@ -7,6 +7,7 @@ public class EmptyLogger extends SimpleLogger {
         setLogLevel(0);
     }
     @Override
-    public void log(Object log, boolean m) {
+    public void log(Object log, boolean isMajor, LogMode logMode, Object... args) {
+        // Do nothing
     }
 }

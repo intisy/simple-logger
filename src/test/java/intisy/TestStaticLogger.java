@@ -26,4 +26,15 @@ public class TestStaticLogger {
         StaticLogger.printStackTrace();
         logger.printStackTrace();
     }
+
+    @Test
+    public void testShort() {
+        SimpleLogger logger = new SimpleLogger();
+        logger.setEnableDuplicateLog(true);
+        logger.setEnableShortLog(true);
+        logger.setLogLevel(LogLevel.DEBUG);
+        logger.major("TEST");
+        for (int i = 0; i < 20; i++)
+            logger.debug(i);
+    }
 }

@@ -1,12 +1,13 @@
 package io.github.intisy.simple.logger;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @SuppressWarnings("unused")
@@ -16,14 +17,12 @@ public class SimpleLogger {
     private boolean enablePercent;
     private boolean enableLogToFile;
     private boolean enableDuplicateLog;
-    private long lastTime = 0;
-    private final long startTime;
-    String major;
-    String last = "";
+    private String last = "";
     static String formattedDateTime;
     private File logFile;
     private File logFolder;
     private boolean enableShortLog;
+    private LogMode logMode;
     final List<String> logs = new ArrayList<>();
     static {
         LocalDateTime now = LocalDateTime.now();
@@ -34,9 +33,9 @@ public class SimpleLogger {
         this.enablePercent = false;
         this.logLevel = LogLevel.NOTE;
         this.enableShortLog = false;
-        this.startTime = System.currentTimeMillis();
         this.enableLogToFile = true;
         this.enableDuplicateLog = false;
+        this.logMode = LogMode.LINE;
     }
 
     public void setLogFolder(File logFolder) {
@@ -46,59 +45,126 @@ public class SimpleLogger {
     public void setEnablePercent(boolean enable) {
         enablePercent = enable;
     }
+
     public void setEnableShortLog(boolean enable) {
         enableShortLog = enable;
     }
+
     public void setLogLevel(int level) {
         logLevel = level;
     }
+
     public void setEnableLogToFile(boolean enable) {
         enableLogToFile = enable;
     }
+
     public void setEnableDuplicateLog(boolean enable) {
         enableDuplicateLog = enable;
     }
+
     public boolean getEnableDuplicateLog() {
         return enableDuplicateLog;
     }
+
     public boolean getEnableLogToFile() {
         return enableLogToFile;
     }
+
     public boolean getEnablePercent() {
         return enablePercent;
     }
+
     public boolean getEnableShortLog() {
         return enableShortLog;
     }
+
     public int getLogLevel() {
         return logLevel;
     }
+
     public void setPercent(int percent) {
         this.percent = percent;
-    }
-    public void setLastTime(long lastTime) {
-        this.lastTime = lastTime;
     }
 
     public void addPercent(int percent) {
         this.percent += percent;
     }
+
     public int getPercent() {
         return this.percent;
     }
-    public void error(Object log) {
-        error(log, 5);
+
+    public void setLogMode(LogMode logMode) {
+        this.logMode = logMode;
     }
-    public void error(Object log, int line) {
-        error(log, null, line);
+
+    public LogMode getLogMode() {
+        return logMode;
     }
-    public void error(Exception exception) {
-        error(null, exception, 5);
+
+    private String getStackTraceElement(int line) {
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+        StackTraceElement element = stackTrace[line];
+        String fileName = element.getFileName();
+        int lineNumber = element.getLineNumber();
+        return " (" + fileName + ":" + lineNumber + ")";
     }
-    public void error(Object log, Exception exception) {
-        error(log, exception, 4);
+
+    public void debug(Object log, Object... args) {
+        debug(log, 4, args);
     }
-    public void error(Object log, Exception exception, int line) {
+    public void debug(Object log, int line, Object... args) {
+        if (logLevel >= LogLevel.DEBUG) {
+            log(LogColor.GRAY.apply(log + getStackTraceElement(line)), args);
+        }
+    }
+
+    public void note(Object log, Object... args) {
+        if (logLevel >= LogLevel.NOTE)
+            log(LogColor.WHITE.apply(String.valueOf(log)), args);
+    }
+
+    public void success(Object log, Object... args) {
+        if (logLevel >= LogLevel.SUCCESS)
+            log(LogColor.GREEN.apply(String.valueOf(log)), args);
+    }
+
+    public void warning(Object log, Object... args) {
+        warning(log, 4, args);
+    }
+
+    public void warning(Object log, int line, Object... args) {
+        if (logLevel >= LogLevel.WARN) {
+            StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+            StackTraceElement element = stackTrace[3];
+            String fileName = element.getFileName();
+            int lineNumber = element.getLineNumber();
+            log(LogColor.YELLOW.apply(log + getStackTraceElement(line)), args);
+        }
+    }
+
+    public void major(Object log, Object... args) {
+        if (logLevel >= LogLevel.MAJOR)
+            log(LogColor.BLUE_BACKGROUND.apply(LogColor.GRAY.apply(String.valueOf(log))), true, args);
+    }
+
+    public void error(Object log, Object... args) {
+        error(log, 5, args);
+    }
+
+    public void error(Object log, int line, Object... args) {
+        error(log, null, line, args);
+    }
+
+    public void error(Exception exception, Object... args) {
+        error(null, exception, 5, args);
+    }
+
+    public void error(Object log, Exception exception, Object... args) {
+        error(log, exception, 4, args);
+    }
+
+    public void error(Object log, Exception exception, int line, Object... args) {
         if (logLevel >= LogLevel.WARN) {
             StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
             StackTraceElement element = stackTrace[3];
@@ -109,119 +175,99 @@ public class SimpleLogger {
             } else {
                 log += getStackTraceElement(line);
             }
-            log(LogColor.RED.apply(log.toString()));
+            log(LogColor.RED.apply(log.toString()), args);
         }
     }
+
     public void printStackTrace() {
         for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
             error(element.toString());
         }
     }
-    public void horrible(Object log) {
-        horrible(log, null);
+
+    public void horrible(Exception exception, Object... args) {
+        horrible(exception, null, args);
     }
-    public void horrible(Object log, Exception exception) {
+
+    public void horrible(Object log, Object... args) {
+        horrible(null, log, args);
+    }
+
+    public void horrible(Exception exception, Object log, Object... args) {
+        if (log == null)
+            log = "";
         if (exception != null) {
-            log += LoggerUtils.exceptionToString((Exception) log);
+            log += LoggerUtils.exceptionToString(exception);
         }
-        log(LogColor.RED.apply((String) log));
+        log(LogColor.RED.apply((String) log), args);
         System.exit(0);
     }
-    public void debug(Object log) {
-        debug(log, 4);
+
+    public void log(Object log, Object... args) {
+        log(log, false, args);
     }
-    public void debug(Object log, int line) {
-        if (logLevel >= LogLevel.DEBUG) {
-            log(LogColor.GRAY.apply(log + getStackTraceElement(line)));
-        }
+
+    public void log(Object log, boolean isMajor, Object... args) {
+        log(log, false, logMode, args);
     }
-    private String getStackTraceElement(int line) {
-        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement element = stackTrace[line];
-        String fileName = element.getFileName();
-        int lineNumber = element.getLineNumber();
-        return " (" + fileName + ":" + lineNumber + ")";
-    }
-    public void note(Object log) {
-        if (logLevel >= LogLevel.NOTE)
-            log(LogColor.WHITE.apply(String.valueOf(log)));
-    }
-    public void success(Object log) {
-        if (logLevel >= LogLevel.SUCCESS)
-            log(LogColor.GREEN.apply(String.valueOf(log)));
-    }
-    public void warning(Object log) {
-        warning(log, 4);
-    }
-    public void warning(Object log, int line) {
-        if (logLevel >= LogLevel.WARN) {
-            StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-            StackTraceElement element = stackTrace[3];
-            String fileName = element.getFileName();
-            int lineNumber = element.getLineNumber();
-            log(LogColor.YELLOW.apply(log + getStackTraceElement(line)));
-        }
-    }
-    public void major(Object log) {
-        if (logLevel >= LogLevel.MAJOR)
-            log(LogColor.BLUE_BACKGROUND.apply(LogColor.GRAY.apply(String.valueOf(log))), true);
-    }
-    public void log(Object log) {
-        log(log, false);
-    }
-    public void log(Object log, boolean m) {
+
+    public void log(Object log, boolean isMajor, LogMode logMode, Object... args) {
         if (enablePercent)
-            if (lastTime != 0)
-                log = "(" + ((int) ((double) (System.currentTimeMillis()-startTime)/lastTime*100)) + "%) " + log.toString();
-            else
-                log = "(" + percent + "%) " + log.toString();
-        if (enableDuplicateLog || !last.equals(String.valueOf(log))) {
+            log = "(" + percent + "%) " + log;
+        if (!enableDuplicateLog && last.equals(String.valueOf(log)))
+            return;
+        else
             last = String.valueOf(log);
-            if (enableLogToFile && logFolder != null) {
-                try {
-                    if (!logFolder.exists())
-                        if (!logFolder.mkdirs())
-                            throw new RuntimeException("Failed to create log folder");
-                    if (logFile == null) {
-                        logFile = new File(logFolder.getAbsoluteFile() + "/" + formattedDateTime + ".log");
-                        if (logFile.exists()) {
-                            int i = 1;
-                            while (!(logFile = new File(logFolder.getAbsoluteFile() + "/" + formattedDateTime + i + ".log")).exists()) {
-                                i++;
-                            }
-                        }
-                        if (!logFile.createNewFile())
-                            throw new RuntimeException("Failed to create log file");
-                    }
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                try (FileWriter writer = new FileWriter(logFile, true)) {
-                    BufferedWriter bufferedWriter = new BufferedWriter(writer);
-                    bufferedWriter.write(LogColor.removeAll((String) log) + "\n");
-                    bufferedWriter.flush();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            if (!enableShortLog)
-                System.out.println(LogColor.WHITE.apply(String.valueOf(log)));
-            else {
-                if (m)
-                    major = String.valueOf(log);
-                else
-                    logs.add(String.valueOf(log));
-                List<String> finalLogs = logs;
-                if (major != null)
-                    if (finalLogs.size() > 12) {
-                        if (finalLogs.size() > 13)
-                            logs.remove(0);
-                        finalLogs.set(finalLogs.size() - 13, major);
-                    } else
-                        finalLogs.set(0, major);
-                for (String v : finalLogs)
-                    System.out.println(v);
+        if (enableLogToFile && logFolder != null) {
+            try {
+                Files.write(getLogFile().toPath(), log.toString().getBytes(StandardCharsets.UTF_8));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
+        if (!enableShortLog)
+            if (logMode == LogMode.LINE) {
+                System.out.println(log);
+            } else if (logMode == LogMode.NORMAL) {
+                System.out.print(log);
+            } else {
+                System.out.format((String) log, args);
+            }
+        else {
+            if (isMajor) {
+                System.out.println(log);
+            } else
+                logs.add(String.valueOf(log));
+            if (!logs.isEmpty()) {
+                String lastLine = logs.get(logs.size() - 1);
+                System.out.print("\r" + lastLine + String.join("", Collections.nCopies(Math.max(last.length() - lastLine.length(), 0), " ")));
+                last = lastLine;
+            }
+        }
+    }
+
+    private File getLogFile() throws IOException {
+        if (!logFolder.exists())
+            if (!logFolder.mkdirs())
+                throw new RuntimeException("Failed to create log folder");
+        if (logFile == null) {
+            int i = 0;
+            while ((logFile = new File(logFolder.getAbsoluteFile() + "/" + formattedDateTime + (i > 0 ? i : "") + ".log")).exists()) {
+                i++;
+            }
+            if (!logFile.createNewFile())
+                throw new RuntimeException("Failed to create log file");
+        }
+        return logFile;
+    }
+
+    private void flush() {
+        System.out.flush();
+    }
+
+    public enum LogMode {
+        LINE,
+        NORMAL,
+        FORMAT
     }
 }
