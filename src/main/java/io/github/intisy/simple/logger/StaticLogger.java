@@ -6,11 +6,6 @@ public class StaticLogger {
     public static void debug(Object string, Object... args) {
         logger.debug(string, 4, args);
     }
-    public static void debug(Object string, boolean log, Object... args) {
-        if (log) {
-            logger.debug(string, 4, args);
-        }
-    }
     public static void note(Object string, Object... args) {
         logger.note(string, args);
     }
