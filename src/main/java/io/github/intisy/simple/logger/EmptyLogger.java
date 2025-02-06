@@ -1,5 +1,8 @@
 package io.github.intisy.simple.logger;
 
+/**
+ * @author Finn Birich
+ */
 @SuppressWarnings("unused")
 public class EmptyLogger extends SimpleLogger {
     public EmptyLogger() {

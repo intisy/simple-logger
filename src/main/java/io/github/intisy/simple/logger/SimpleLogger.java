@@ -2,6 +2,7 @@ package io.github.intisy.simple.logger;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.time.LocalDateTime;
@@ -10,6 +11,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author Finn Birich
+ */
 @SuppressWarnings("unused")
 public class SimpleLogger {
     private int logLevel;
@@ -23,6 +27,7 @@ public class SimpleLogger {
     private File logFolder;
     private boolean enableShortLog;
     private LogMode logMode;
+    private PrintStream outputSteam;
     final List<String> logs = new ArrayList<>();
     static {
         LocalDateTime now = LocalDateTime.now();
@@ -36,6 +41,11 @@ public class SimpleLogger {
         this.enableLogToFile = true;
         this.enableDuplicateLog = false;
         this.logMode = LogMode.LINE;
+        this.outputSteam = LoggerSettings.outputSteam;
+    }
+
+    public void setOutputSteam(PrintStream outputSteam) {
+        this.outputSteam = outputSteam;
     }
 
     public void setLogFolder(File logFolder) {
@@ -60,6 +70,10 @@ public class SimpleLogger {
 
     public void setEnableDuplicateLog(boolean enable) {
         enableDuplicateLog = enable;
+    }
+
+    public PrintStream getOutputSteam() {
+        return outputSteam;
     }
 
     public boolean getEnableDuplicateLog() {

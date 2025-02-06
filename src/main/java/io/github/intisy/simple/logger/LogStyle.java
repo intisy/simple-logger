@@ -1,5 +1,8 @@
 package io.github.intisy.simple.logger;
 
+/**
+ * @author Finn Birich
+ */
 @SuppressWarnings("unused")
 enum LogStyle {
     RESET("\u001B[0m"),
