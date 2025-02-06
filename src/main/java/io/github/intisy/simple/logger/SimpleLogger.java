@@ -41,7 +41,6 @@ public class SimpleLogger {
         this.enableLogToFile = true;
         this.enableDuplicateLog = false;
         this.logMode = LogMode.LINE;
-        this.outputSteam = LoggerSettings.outputSteam;
     }
 
     public void setOutputSteam(PrintStream outputSteam) {
@@ -73,7 +72,7 @@ public class SimpleLogger {
     }
 
     public PrintStream getOutputSteam() {
-        return outputSteam;
+        return outputSteam == null ? LoggerSettings.outputSteam : outputSteam;
     }
 
     public boolean getEnableDuplicateLog() {
@@ -241,20 +240,20 @@ public class SimpleLogger {
         }
         if (!enableShortLog)
             if (logMode == LogMode.LINE) {
-                System.out.println(log);
+                getOutputSteam().println(log);
             } else if (logMode == LogMode.NORMAL) {
-                System.out.print(log);
+                getOutputSteam().print(log);
             } else {
-                System.out.format((String) log, args);
+                getOutputSteam().format((String) log, args);
             }
         else {
             if (isMajor) {
-                System.out.println(log);
+                getOutputSteam().println(log);
             } else
                 logs.add(String.valueOf(log));
             if (!logs.isEmpty()) {
                 String lastLine = logs.get(logs.size() - 1);
-                System.out.print("\r" + lastLine + String.join("", Collections.nCopies(Math.max(last.length() - lastLine.length(), 0), " ")));
+                getOutputSteam().print("\r" + lastLine + String.join("", Collections.nCopies(Math.max(last.length() - lastLine.length(), 0), " ")));
                 last = lastLine;
             }
         }
@@ -276,7 +275,7 @@ public class SimpleLogger {
     }
 
     private void flush() {
-        System.out.flush();
+        getOutputSteam().flush();
     }
 
     public enum LogMode {
