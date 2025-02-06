@@ -2,6 +2,9 @@ package io.github.intisy.simple.logger;
 
 import java.io.File;
 
+/**
+ * @author Finn Birich
+ */
 @SuppressWarnings("unused")
 public class LoggerBuilder {
     private final SimpleLogger logger = new SimpleLogger();

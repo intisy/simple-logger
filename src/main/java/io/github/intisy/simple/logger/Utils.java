@@ -3,6 +3,9 @@ package io.github.intisy.simple.logger;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 
+/**
+ * @author Finn Birich
+ */
 public class Utils {
     protected static String removeDuplicateLines(String text) {
         String[] lines = text.split("\\r?\\n");

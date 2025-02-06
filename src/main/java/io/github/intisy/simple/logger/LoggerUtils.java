@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 
+/**
+ * @author Finn Birich
+ */
 public class LoggerUtils {
     public static String exceptionToString(Exception exception) {
         return exceptionToString(exception, null);
