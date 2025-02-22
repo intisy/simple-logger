@@ -166,7 +166,10 @@ public class SimpleLogger {
     }
 
     public void error(Object log, int line, Object... args) {
-        error(log, null, line, args);
+        if (log instanceof Exception)
+            error(null, (Exception) log, line, args);
+        else
+            error(log, null, line, args);
     }
 
     public void error(Exception exception, Object... args) {
