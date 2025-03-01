@@ -132,6 +132,10 @@ public class SimpleLogger {
         }
     }
 
+    public void info(Object log, Object... args) {
+        note(log, args);
+    }
+
     public void note(Object log, Object... args) {
         if (logLevel >= LogLevel.NOTE)
             log(LogColor.WHITE.apply(String.valueOf(log)), args);
@@ -143,6 +147,10 @@ public class SimpleLogger {
     }
 
     public void warning(Object log, Object... args) {
+        warning(log, 4, args);
+    }
+
+    public void warn(Object log, Object... args) {
         warning(log, 4, args);
     }
 
