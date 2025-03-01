@@ -12,6 +12,9 @@ public class StaticLogger {
     public static void note(Object string, Object... args) {
         logger.note(string, args);
     }
+    public static void info(Object string, Object... args) {
+        logger.note(string, args);
+    }
     public static void printStackTrace() {
         logger.printStackTrace();
     }
@@ -19,6 +22,9 @@ public class StaticLogger {
         logger.success(string, args);
     }
     public static void warning(Object string, Object... args) {
+        logger.warning(string, 4, args);
+    }
+    public static void warn(Object string, Object... args) {
         logger.warning(string, 4, args);
     }
     public static void major(Object string, Object... args) {
