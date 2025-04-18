@@ -22,6 +22,8 @@ public class SimpleLogger {
     private boolean enableLogToFile;
     private boolean enableDuplicateLog;
     private String last = "";
+    private String prefix = "";
+    private String suffix = "";
     static String formattedDateTime;
     private File logFile;
     private File logFolder;
@@ -29,6 +31,22 @@ public class SimpleLogger {
     private LogMode logMode;
     private PrintStream outputSteam;
     final List<String> logs = new ArrayList<>();
+    
+    public void setPrefix(String prefix) {
+        this.prefix = prefix != null ? prefix : "";
+    }
+
+    public void setSuffix(String suffix) {
+        this.suffix = suffix != null ? suffix : "";
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public String getSuffix() {
+        return suffix;
+    }
     static {
         LocalDateTime now = LocalDateTime.now();
         String format = "yyyy-MM-dd-HH-mm";
@@ -236,32 +254,38 @@ public class SimpleLogger {
     }
 
     public void log(Object log, boolean isMajor, LogMode logMode, Object... args) {
+        String logStr = prefix + String.valueOf(log) + suffix;
+        
         if (enablePercent)
-            log = "(" + percent + "%) " + log;
-        if (!enableDuplicateLog && last.equals(String.valueOf(log)))
+            logStr = "(" + percent + "%) " + logStr;
+            
+        if (!enableDuplicateLog && last.equals(logStr))
             return;
         else
-            last = String.valueOf(log);
+            last = logStr;
+            
         if (enableLogToFile && logFolder != null) {
             try {
-                Files.write(getLogFile().toPath(), log.toString().getBytes(StandardCharsets.UTF_8));
+                Files.write(getLogFile().toPath(), logStr.getBytes(StandardCharsets.UTF_8));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-        if (!enableShortLog)
+        
+        if (!enableShortLog) {
             if (logMode == LogMode.LINE) {
-                getOutputSteam().println(log);
+                getOutputSteam().println(logStr);
             } else if (logMode == LogMode.NORMAL) {
-                getOutputSteam().print(log);
+                getOutputSteam().print(logStr);
             } else {
-                getOutputSteam().format((String) log, args);
+                getOutputSteam().format(logStr, args);
             }
-        else {
+        } else {
             if (isMajor) {
-                getOutputSteam().println(log);
-            } else
-                logs.add(String.valueOf(log));
+                getOutputSteam().println(logStr);
+            } else {
+                logs.add(logStr);
+            }
             if (!logs.isEmpty()) {
                 String lastLine = logs.get(logs.size() - 1);
                 getOutputSteam().print("\r" + lastLine + String.join("", Collections.nCopies(Math.max(last.length() - lastLine.length(), 0), " ")));
