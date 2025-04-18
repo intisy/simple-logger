@@ -254,7 +254,7 @@ public class SimpleLogger {
     }
 
     public void log(Object log, boolean isMajor, LogMode logMode, Object... args) {
-        String logStr = prefix + String.valueOf(log) + suffix;
+        String logStr = prefix + log + suffix;
         
         if (enablePercent)
             logStr = "(" + percent + "%) " + logStr;
