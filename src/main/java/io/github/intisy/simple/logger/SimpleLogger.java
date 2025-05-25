@@ -31,7 +31,7 @@ public class SimpleLogger {
     private LogMode logMode;
     private PrintStream outputSteam;
     final List<String> logs = new ArrayList<>();
-    
+
     public void setPrefix(String prefix) {
         this.prefix = prefix != null ? prefix : "";
     }
@@ -255,15 +255,15 @@ public class SimpleLogger {
 
     public void log(Object log, boolean isMajor, LogMode logMode, Object... args) {
         String logStr = prefix + log + suffix;
-        
+
         if (enablePercent)
             logStr = "(" + percent + "%) " + logStr;
-            
+
         if (!enableDuplicateLog && last.equals(logStr))
             return;
         else
             last = logStr;
-            
+
         if (enableLogToFile && logFolder != null) {
             try {
                 Files.write(getLogFile().toPath(), logStr.getBytes(StandardCharsets.UTF_8));
@@ -271,7 +271,7 @@ public class SimpleLogger {
                 throw new RuntimeException(e);
             }
         }
-        
+
         if (!enableShortLog) {
             if (logMode == LogMode.LINE) {
                 getOutputSteam().println(logStr);
@@ -311,6 +311,31 @@ public class SimpleLogger {
 
     private void flush() {
         getOutputSteam().flush();
+    }
+
+    @SuppressWarnings("MethodDoesntCallSuperMethod")
+    @Override
+    public SimpleLogger clone() {
+        SimpleLogger cloned = new SimpleLogger();
+
+        cloned.logLevel = this.logLevel;
+        cloned.percent = this.percent;
+        cloned.enablePercent = this.enablePercent;
+        cloned.enableLogToFile = this.enableLogToFile;
+        cloned.enableDuplicateLog = this.enableDuplicateLog;
+        cloned.last = this.last;
+        cloned.setPrefix(this.prefix);
+        cloned.setSuffix(this.suffix);
+
+        cloned.setLogFolder(this.logFolder);
+
+        cloned.enableShortLog = this.enableShortLog;
+        cloned.setLogMode(this.logMode);
+        cloned.setOutputSteam(this.outputSteam);
+
+        cloned.logs.addAll(this.logs);
+
+        return cloned;
     }
 
     public enum LogMode {
