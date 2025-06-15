@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -142,11 +143,16 @@ public class SimpleLogger {
     }
 
     public void debug(Object log, Object... args) {
-        debug(log, 4, args);
+        debug(log, 5, args);
     }
-    public void debug(Object log, int line, Object... args) {
+
+    protected void debug(Object log, int line, Object... args) {
+        debug(log, line, logMode, args);
+    }
+
+    protected void debug(Object log, int line, LogMode LogMode, Object... args) {
         if (logLevel >= LogLevel.DEBUG) {
-            log(LogColor.GRAY.apply(log + getStackTraceElement(line)), args);
+            log(LogColor.GRAY.apply(log + getStackTraceElement(line)), LogMode, args);
         }
     }
 
@@ -155,8 +161,12 @@ public class SimpleLogger {
     }
 
     public void note(Object log, Object... args) {
+        note(log, logMode, args);
+    }
+
+    protected void note(Object log, LogMode LogMode, Object... args) {
         if (logLevel >= LogLevel.NOTE)
-            log(LogColor.WHITE.apply(String.valueOf(log)), args);
+            log(LogColor.WHITE.apply(String.valueOf(log)), false, LogMode, args);
     }
 
     public void success(Object log, Object... args) {
@@ -164,15 +174,15 @@ public class SimpleLogger {
             log(LogColor.GREEN.apply(String.valueOf(log)), args);
     }
 
-    public void warning(Object log, Object... args) {
-        warning(log, 4, args);
-    }
-
     public void warn(Object log, Object... args) {
         warning(log, 4, args);
     }
 
-    public void warning(Object log, int line, Object... args) {
+    public void warning(Object log, Object... args) {
+        warning(log, 4, args);
+    }
+
+    protected void warning(Object log, int line, Object[] args) {
         if (logLevel >= LogLevel.WARN) {
             StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
             StackTraceElement element = stackTrace[3];
@@ -191,7 +201,7 @@ public class SimpleLogger {
         error(log, 5, args);
     }
 
-    public void error(Object log, int line, Object... args) {
+    protected void error(Object log, int line, Object[] args) {
         if (log instanceof Exception)
             error(null, (Exception) log, line, args);
         else
@@ -206,7 +216,7 @@ public class SimpleLogger {
         error(log, exception, 4, args);
     }
 
-    public void error(Object log, Exception exception, int line, Object... args) {
+    protected void error(Object log, Exception exception, int line, Object[] args) {
         if (logLevel >= LogLevel.WARN) {
             StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
             StackTraceElement element = stackTrace[3];
@@ -245,15 +255,19 @@ public class SimpleLogger {
         System.exit(0);
     }
 
-    public void log(Object log, Object... args) {
+    protected void log(Object log, Object[] args) {
         log(log, false, args);
     }
 
-    public void log(Object log, boolean isMajor, Object... args) {
+    protected void log(Object log, LogMode logMode, Object[] args) {
         log(log, false, logMode, args);
     }
 
-    public void log(Object log, boolean isMajor, LogMode logMode, Object... args) {
+    protected void log(Object log, boolean isMajor, Object[] args) {
+        log(log, false, logMode, args);
+    }
+
+    protected void log(Object log, boolean isMajor, LogMode logMode, Object[] args) {
         String logStr = prefix + log + suffix;
 
         if (enablePercent)
@@ -277,7 +291,7 @@ public class SimpleLogger {
                 getOutputSteam().println(logStr);
             } else if (logMode == LogMode.NORMAL) {
                 getOutputSteam().print(logStr);
-            } else {
+            } else if (logMode == LogMode.FORMAT) {
                 getOutputSteam().format(logStr, args);
             }
         } else {
