@@ -58,7 +58,7 @@ public class SimpleLogger {
         this.logLevel = LogLevel.NOTE;
         this.enableShortLog = false;
         this.enableLogToFile = true;
-        this.enableDuplicateLog = false;
+        this.enableDuplicateLog = true;
         this.logMode = LogMode.LINE;
     }
 
@@ -286,15 +286,7 @@ public class SimpleLogger {
             }
         }
 
-        if (!enableShortLog) {
-            if (logMode == LogMode.LINE) {
-                getOutputSteam().println(logStr);
-            } else if (logMode == LogMode.NORMAL) {
-                getOutputSteam().print(logStr);
-            } else if (logMode == LogMode.FORMAT) {
-                getOutputSteam().format(logStr, args);
-            }
-        } else {
+        if (enableShortLog) {
             if (isMajor) {
                 getOutputSteam().println(logStr);
             } else {
@@ -304,6 +296,14 @@ public class SimpleLogger {
                 String lastLine = logs.get(logs.size() - 1);
                 getOutputSteam().print("\r" + lastLine + String.join("", Collections.nCopies(Math.max(last.length() - lastLine.length(), 0), " ")));
                 last = lastLine;
+            }
+        } else {
+            if (logMode == LogMode.LINE) {
+                getOutputSteam().println(logStr);
+            } else if (logMode == LogMode.NORMAL) {
+                getOutputSteam().print(logStr);
+            } else if (logMode == LogMode.FORMAT) {
+                getOutputSteam().format(logStr, args);
             }
         }
     }
